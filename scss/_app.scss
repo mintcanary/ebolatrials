@@ -35,7 +35,7 @@ body {
     background-position: center center;
     color: #fff;
     
-    @include media($large-screen) {
+    @include media($max-width) {
         padding-bottom: 75px;
     }
     
@@ -82,8 +82,9 @@ body {
     background-color: #fff;
     position: relative;
     padding: $base-spacing;
+    text-align: center;
     
-    @include media($large-screen) {
+    @include media($max-width) {
         top: -75px;
         min-height: 75px;
         border-radius: $base-border-radius $base-border-radius 0 0;
@@ -113,35 +114,152 @@ body {
                 @include row(table);
                 background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIW2P8+vXrfwAJpgPg8gE+iwAAAABJRU5ErkJggg==);
                 background-repeat: repeat-y;
-                background-position: 83.4% top;
+                background-position: 75.1% top;
+                border-radius: $base-border-radius;
+                overflow: hidden;
+                border-left: solid em(7) $blue;
+                margin-bottom: $small-spacing;
+                
+                @include media($large-screen) {
+                    background-position: 83.4% top;
+                }
+                @include media($max-width) {
+                    width: $max-width;
+                    margin-left: - ($gutter - em(3));
+                    margin-right: - $gutter;
+                }
                 
                 .description {
-                    @include span-columns(10);
+                    @include span-columns(9);
+                    padding: ($gutter - em(7));
+                    vertical-align: middle;
+                    
+                    @include media($large-screen) {
+                        @include span-columns(10);
+                    }
+                    
+                    h4 {
+                        font-size: 22px;
+                        display: inline;
+                    }
+                    
+                    .id {
+                        font-size: 12px;
+                        background-color: $base-font-color;
+                        color: #fff;
+                        padding: $small-spacing / 3 $small-spacing;
+                        display: inline-block;
+                        border-radius: $base-border-radius;
+                        position: relative;
+                        top: -3px;
+                        margin-top: 10px;
+                    }
+                    
+                    p {
+                        margin-top: 8px;
+                        margin-bottom: 0;
+                        font-size: rem(15);
+                    }
                 }
                 
                 .stats {
-                    @include span-columns(2);
-                    @include reset-display;
-                    height: 145px;
+                    @include span-columns(3);
                     
-                    & > span {
+                    @include media($large-screen) {
+                        @include span-columns(2);
+                    }
+                    
+                    @include reset-display;
+                    height: 144px;
+                    vertical-align: top;
+                    
+                    & > div {
                         display: block;
-                        height: 50%;
                         font-weight: bold;
                         
-                        span {
-                            display: none;
-                            font-weight: normal;
+                        @include media($medium-screen) {
+                            height: 50%;
+                        }
+                        
+                        p {
+                            margin: 0;
+                            text-align: center;
+                            padding: 10px;
+                            line-height: 1.1;
                             
                             @include media($medium-screen) {
+                                margin-left: 40px;
+                                text-align: left;
+                                padding-top: 19px;
+                                font-size: 18px;
+                            }
+                            
+                            &:before {
+                                @include icon-font();
                                 display: block;
+                                font-size: 24px;
+                                text-align: center;
+                                
+                                @include media($medium-screen) {
+                                    float: left;
+                                    font-size: 31px;
+                                    margin-top: 2px;
+                                    margin-left: -42px;
+                                    width: 40px;
+                                }
+                            }
+                        
+                            span {
+                                display: none;
+                                font-weight: normal;
+                                font-size: 13px;
+
+                                @include media($medium-screen) {
+                                    display: block;
+                                }
                             }
                         }
                         
                         &.days {
                             background-color: $blue;
                             color: #fff;
+                            
+                            p {
+                                &:before {
+                                    content: "\e802";
+                                }
+                            }
                         }
+                        
+                        &.participants {
+                            p {
+                                &:before {
+                                    content: "\e800";
+                                    
+                                    @include media($medium-screen) {
+                                        font-size: 32px;
+                                        margin-top: 1px;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                &.no-results {
+                    border-left-color: $red;
+                    
+                    div.days {
+                        background-color: $red;
+                    }
+                }
+                
+                &.ongoing {
+                    border-left-color: $yellow;
+                    
+                    div.days {
+                        background-color: $yellow;
+                        color: $base-font-color;
                     }
                 }
             }
