@@ -31,7 +31,7 @@ body {
 
 .banner {
     background-color: $dark-gray;
-    @include retina-image("../img/banner", cover, jpg);
+    @include retina-image("../media/banner", cover, jpg);
     background-position: center center;
     color: #fff;
     
@@ -274,17 +274,49 @@ body {
     & > div {
         @include outer-container;
         padding: $base-spacing;
+        
+        @include media($medium-screen) {
+            padding-top: $base-spacing * 2;
+            padding-bottom: $base-spacing * 2;
+        }
 
         article {
             @include media($medium-screen) {
-                @include span-columns(6);
+                @include span-columns(7);
+            }
+            
+            h3 {
+                font-size: rem(36);
+            }
+            
+            & > a {
+                @include round-button(#fff, $blue);
+                margin-top: $small-spacing;
             }
         }
         aside {
             display: none;
+            text-align: right;
 
             @include media($medium-screen) {
-                @include span-columns(6);
+                @include span-columns(5);
+            }
+            
+            .modal-trigger {
+                margin-left: $base-spacing;
+                position: relative;
+                
+                &:after {
+                    @include icon-font();
+                    content: "\e801";
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    font-size: 90px;
+                    margin-top: -45px;
+                    margin-left: -45px;
+                    text-shadow: 0px 2px 1px rgba(0, 0, 0, 0.4);
+                }
             }
         }
     }
