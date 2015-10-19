@@ -37,3 +37,37 @@ $base-border: 1px solid $base-border-color;
 // Forms
 $form-box-shadow: inset 0 1px 3px rgba(#000, 0.06);
 $form-box-shadow-focus: $form-box-shadow, 0 0 5px adjust-color($action-color, $lightness: -5%, $alpha: -0.3);
+
+
+// Menu variables (need tidying)
+
+// breakpoints
+
+$S:     320px; 
+$M:     em(640);     
+$L:     em(860); 
+
+// colors
+
+$main-text: $base-font-color;
+$link: $action-color;
+
+$color-1: $dark-gray;
+$color-2: $base-font-color;
+$color-3: $medium-gray;
+
+// fonts 
+
+$primary-font: $base-font-family;
+
+// z-index 
+
+$header-zindex: 3;
+$secondary-nav: 1;
+$content-zindex: 2;
+
+
+// header height 
+
+$header-S: 44px;
+$header-M: 70px;

@@ -1,5 +1,11 @@
+html,
+body {
+	height: 100%;
+}
+
 html {
     background-color: $footer-colour;
+    overflow-x: hidden;
 }
     
 body {
@@ -10,7 +16,7 @@ body {
     background-color: $dark-gray;
     color: #fff;
 
-    header {
+    & > div {
         @include outer-container;
         padding-left: $base-spacing;
         padding-right: $base-spacing;
